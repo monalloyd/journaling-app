@@ -1,0 +1,8 @@
+.tag-filter {
+    border-radius: 8px;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    border: none;
+    box-sizing: border-box;
+    resize: horizontal;
+}

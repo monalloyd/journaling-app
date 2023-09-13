@@ -1,5 +1,15 @@
+@font-face {
+  font-family: "ScriptinaPro";
+  src: local("ScriptinaPro"),
+   url("./assets/fonts/scriptina-pro/ScriptinaPro.otf") format("opentype");
+ }
+
+ .font-face-sp {
+  font-family: "ScriptinaPro";
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
   line-height: 1.5;
   font-weight: 400;
 

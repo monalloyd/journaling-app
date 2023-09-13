@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import "./App.css";
+import "./assets/fonts/scriptina-pro/ScriptinaPro.otf";
 
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";

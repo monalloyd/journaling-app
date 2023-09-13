@@ -1,0 +1,38 @@
+.new-button {
+    background-color:#6f1c12;
+    color: rgb(200, 171, 139);
+    text-decoration: none;
+    display: inline-block;
+    padding: 5% 0% 0% 10%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    font-size: 200%;
+    text-align: center;
+    justify-content: center;
+}
+
+.new-button:focus,
+.new-button:focus-visible {
+  outline: none;
+}
+
+.new-button:hover {
+    border-color: #6f1c12;
+    font-size: 220%;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+
+.nav-button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 16px;
+    border-radius: 50%;
+}
+
+.tag-button {
+    border-radius: 12px;
+}
