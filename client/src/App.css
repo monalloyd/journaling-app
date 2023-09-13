@@ -13,8 +13,16 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: black;
-  background-color: white;
+  --primary-beige: #c8ab8b;
+  --primary-white:#dacdbf;
+  --secondary-rust: #925b45;
+  --accent-red-dark: #6f1c12;
+  --accent-green-dark:#404536;
+  --accent-green-light: #626456;
+
+  color: var(--accent-green-dark);
+  background-color: var(--primary-beige);
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

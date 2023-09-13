@@ -4,7 +4,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    background-color: #925b45;
+    background-color: var(--secondary-rust);
 }
 
 .sidebar nav ul {
@@ -15,8 +15,8 @@
     flex-direction: column;
     align-items: center;
     padding: 20%;
-    background-color: #925b45;
-    color: #c8ab8b;
+    background-color: var(--secondary-rust);
+    color: var(--primary-beige);
     font-size: 1.5rem;
     font-weight: bold;
 }

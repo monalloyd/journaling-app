@@ -1,6 +1,6 @@
 .new-button {
-    background-color:#6f1c12;
-    color: #c8ab8b;
+    background-color: var(--accent-red-dark);
+    color: var(--primary-beige);
     text-decoration: none;
     display: inline-block;
     padding: 5% 0% 0% 10%;
@@ -20,7 +20,7 @@
 }
 
 .new-button:hover {
-    border-color: #6f1c12;
+    border-color: var(--accent-red-dark);
     font-size: 220%;
     -webkit-transition: .5s;
     -moz-transition: .5s;

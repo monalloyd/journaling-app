@@ -2,31 +2,31 @@ input {
     border-radius: 8px;
     margin-bottom: 10%;
     margin-top: 10%;
-    border: 1px solid #6f1c12;
+    border: 1px solid var(--accent-red-dark);
     box-sizing: border-box;
     resize: horizontal;
     padding: 0.7rem 1.7rem;
     min-width: 10rem;
     font-family: inherit;
     font-weight: 400;
-    background-color: #c8ab8b;
-    color: #404536;
+    background-color: var(--primary-beige);
+    color: var(--accent-green-dark);
 }
 
 input:focus {
     outline: 2px double;
-    border-color: #626456;
+    border-color: var(--accent-green-light);
 }
 
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #404536;
-    opacity: 1; /* Firefox */
+input::placeholder {
+    color: var(--accent-green-dark);
+    opacity: 1;
   }
   
-input::-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #404536;
+input::-ms-input-placeholder {
+    color: var(--accent-green-dark);
   }
   
-input::-ms-input-placeholder { /* Microsoft Edge */
-    color: #404536;
+input::-ms-input-placeholder {
+    color: var(--accent-green-dark);
   }
