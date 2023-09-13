@@ -14,33 +14,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30%;
+    padding: 20%;
     background-color: #925b45;
     color: #c8ab8b;
     font-size: 1.5rem;
     font-weight: bold;
-}
-  
-/* .sidebar nav button {
-    padding: 0.7rem 1.7rem;
-    font-weight: bold;
-}
-  
-.sidebar nav button:hover {
-    box-shadow: 0px 0px 5px rgb(255, 255, 255);
-} */
-  
-.sidebar input {
-    padding: 0.7rem 1.7rem;
-    min-width: 20rem;
-}
-
-.sidebar a {
-    font-weight: 500;
-    color: white;
-    text-decoration: inherit;
-}
-
-.sidebar a:hover {
-    color: #ecedfe;
 }
