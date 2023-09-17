@@ -1,5 +1,5 @@
 .sidebar {
-    width: 50%;
+    width: 30%;
     height: 100vh;
     position: absolute;
     top: 0;
@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-left: 0;
 }
 
 .sidebar nav {
@@ -25,9 +26,14 @@
     color: var(--primary-beige);
     font-size: 1.5rem;
     font-weight: bold;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
 }
 
 .sidebar nav ul p {
-    padding-left: 120px;
-    padding-right: 120px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
