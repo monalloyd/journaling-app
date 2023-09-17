@@ -1,8 +1,10 @@
+import Table from "../../components/Table";
+
 const HomePage = () => {
     return (
-        <>
-          <div className="content">Hello, World!</div>
-        </>
+        <div className="content">
+          <Table />
+        </div>
       );
 }
 

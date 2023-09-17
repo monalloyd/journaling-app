@@ -42,6 +42,20 @@ body {
   align-items: center;
 }
 
+h1 {
+  color: var(--accent-red-dark);
+  margin: 10px;
+}
+
+a {
+  color: var(--accent-red-dark);
+  opacity: 1;
+}
+
+a:hover, a:focus {
+  opacity: 0.8;
+}
+
 #root {
   width: 100%;
 }
@@ -49,6 +63,7 @@ body {
 .content {
   box-sizing: border-box;
   display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-left: 30%;
