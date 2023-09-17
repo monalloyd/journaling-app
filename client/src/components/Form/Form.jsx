@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import "./Form.css";
 import Button from "../Button";
 
-const Form = () => {
-    const [tags, setTags] = useState([]);
+const Form = ({entry, onSave, onCancel}) => {
+    const [tags, setTags] = useState(entry?.tags ?? []);
     const [tagInput, setTagInput] = useState("");
-    const [title, setTitle] = useState("");
-    const [date, setDate] = useState("");
-    const [entry, setEntry] = useState("");
+    const [title, setTitle] = useState(entry?.title ?? "");
+    const [date, setDate] = useState(entry?.date ?? "");
+    const [content, setContent] = useState(entry?.content ?? "");
 
     const handleTagInputKeyPress = (e) => {
         if (e.key === "Enter" && tagInput.trim() !== "") {
@@ -70,7 +69,8 @@ const Form = () => {
                             onClick={deleteTag} 
                             text={tag}
                             className={"nav-btn-square tag-btn robo"} 
-                            key={i} />
+                            key={i} 
+                        />
                     ))
                 }
             </div>
@@ -82,17 +82,22 @@ const Form = () => {
                     className="form-input" 
                     rows="10" 
                     cols="60"
-                    value={entry}
-                    onChange={e => setEntry(e.target.value)}
+                    value={content}
+                    onChange={e => setContent(e.target.value)}
                 />
             </div>
 
             <div className="form-btns">
-                <Button className={"nav-btn-square save-btn robo"} text={"Save"}/>
-                
-                <Link to="/">
-                    <Button className={"nav-btn-square cancel-btn robo"} text={"Cancel"}/>
-                </Link>
+                <Button 
+                    className={"nav-btn-square save-btn robo"} 
+                    onClick={onSave} 
+                    text={"Save"}
+                />
+                <Button 
+                    className={"nav-btn-square cancel-btn robo"} 
+                    onClick={onCancel} 
+                    text={"Cancel"}
+                />
             </div>
         </form>
     );

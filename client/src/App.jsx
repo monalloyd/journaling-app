@@ -12,6 +12,8 @@ import "./assets/fonts/scriptina-pro/ScriptinaPro.otf";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import NewEntryPage from "./pages/NewEntryPage";
+import UpdateEntryPage from "./pages/UpdateEntryPage/UpdateEntryPage";
+import ReadEntryPage from "./pages/ReadEntryPage";
 
 import Sidebar from "./layouts/Sidebar";
 
@@ -20,18 +22,19 @@ const router = createBrowserRouter(
     <Route path="/" element={<Sidebar />} >
       <Route index element={<HomePage />} />
       <Route path="new" element={<NewEntryPage />} />
+      <Route path="update/:id" element={<UpdateEntryPage />} />
+      <Route path="entry/:id" element={<ReadEntryPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )
-)
+);
 
 function App() {
-
   return (
     <>
       <RouterProvider router={router}/>
     </>
   );
-}
+};
 
 export default App;

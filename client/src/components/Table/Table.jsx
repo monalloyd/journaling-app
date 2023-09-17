@@ -4,35 +4,47 @@ import Button from "./../Button";
 import "./Table.css";
 
 const dummyEntries = [
-    {
+    {   
+        id: 1111,
         title: "one",
         date: "date1",
-        tags: ["tag"]
+        tags: ["tag"],
+        content: "blaaaaaaahhhhhhh1"
     },
     {
+        id: 2222,
         title: "two",
         date: "date2",
-        tags: ["tag2"]
+        tags: ["tag2"],
+        content: "blaaaaaaahhhhhhh2"
     },
     {
+        id: 3333,
         title: "three",
         date: "date3",
-        tags: ["tag3"]
+        tags: ["tag3"],
+        content: "blaaaaaaahhhhhhh3"
     },
     {
+        id: 4444,
         title: "four",
         date: "date4",
-        tags: ["tag", "tag2"]
+        tags: ["tag", "tag2"],
+        content: "blaaaaaaahhhhhhh4"
     },
     {
+        id: 5555,
         title: "five",
         date: "date5",
-        tags: ["tag", "tag3"]
+        tags: ["tag", "tag3"],
+        content: "blaaaaaaahhhhhhh5"
     },
     {
+        id: 6666,
         title: "six",
         date: "date6",
-        tags: ["tag2", "tag3"]
+        tags: ["tag2", "tag3"],
+        content: "blaaaaaaahhhhhhh6"
     }
 ]
 
@@ -88,10 +100,10 @@ const Table = () => {
                     }
                     </td>
                 </tr>
-                {entries.map((entry, i) => (
-                    <tr key={i}>
+                {entries.map((entry) => (
+                    <tr key={entry.id}>
                     <td className="col-1">
-                        <Link to={`/entry/id`}>
+                        <Link to={`/entry/${entry.id}`}>
                             {entry.title}
                         </Link>
                     </td>
@@ -99,12 +111,12 @@ const Table = () => {
                     <td className="col-3">
                         {
                             entry.tags && entry.tags.map((tag, i) => (
-                                <span key={"tag-" + i}>{tag}</span>
+                                <span key={i}>{tag}</span>
                             ))
                         }
                     </td>
                     <td className="col-4">
-                        <Link to={`/update/id`}>
+                        <Link to={`/update/${entry.id}`}>
                             <Button 
                                 className={"nav-btn-square update-btn robo"} 
                                 text={"Update"}
