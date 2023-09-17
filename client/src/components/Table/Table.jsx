@@ -51,7 +51,7 @@ const Table = () => {
             return tagsFromUrl.every((tag) => entry.tags.includes(tag));
         });
         setEntries(filteredEntries);
-    }, [tagsFromUrl]);
+    }, [location.search]);
 
     const deleteTag = (tagToDelete) => {
         const updatedTags = [...tagsFromUrl];
@@ -72,20 +72,22 @@ const Table = () => {
 
     return (
         <>
-        <div className="tag-container">
-        {
-            tagsFromUrl && tagsFromUrl.map((tag, i) => (
-                <Button 
-                    className={"nav-btn-square tag-btn robo"} 
-                    text={tag} 
-                    key={i}
-                    onClick={() => deleteTag(tag)}
-                />
-            ))
-        }
-        </div>
         <table>
             <tbody>
+                <tr id="tag-container">
+                    <td className="tag-row">
+                    {
+                        tagsFromUrl && tagsFromUrl.map((tag, i) => (
+                            <Button 
+                                className={"nav-btn-square tag-btn robo"} 
+                                text={tag} 
+                                key={i}
+                                onClick={() => deleteTag(tag)}
+                            />
+                        ))
+                    }
+                    </td>
+                </tr>
                 {entries.map((entry, i) => (
                     <tr key={i}>
                     <td className="col-1">
