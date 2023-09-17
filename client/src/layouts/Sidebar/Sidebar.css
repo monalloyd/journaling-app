@@ -5,18 +5,29 @@
     top: 0;
     bottom: 0;
     background-color: var(--secondary-rust);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .sidebar nav ul {
-    margin: 0;
-    padding: 0;
     list-style-type: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20%;
-    background-color: var(--secondary-rust);
     color: var(--primary-beige);
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.sidebar nav ul p {
+    padding-left: 120px;
+    padding-right: 120px;
 }

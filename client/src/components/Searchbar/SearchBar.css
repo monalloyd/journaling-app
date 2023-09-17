@@ -1,8 +1,8 @@
-input {
+input, textarea {
     border-radius: 8px;
     margin-bottom: 10%;
     margin-top: 10%;
-    border: 1px solid var(--accent-red-dark);
+    border: none;
     box-sizing: border-box;
     resize: horizontal;
     padding: 0.7rem 1.7rem;
@@ -13,7 +13,7 @@ input {
     color: var(--accent-green-dark);
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: 2px double;
     border-color: var(--accent-green-light);
 }

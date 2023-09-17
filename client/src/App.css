@@ -8,6 +8,10 @@
   font-family: "ScriptinaPro";
 }
 
+.robo {
+  font-family: 'Roboto Slab', serif;
+}
+
 :root {
   font-family: 'Roboto Slab', serif;
   line-height: 1.5;
@@ -23,7 +27,6 @@
   color: var(--accent-green-dark);
   background-color: var(--primary-beige);
 
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,6 +37,18 @@
 body {
   margin: 0;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15%;
 }
 
 h1 {

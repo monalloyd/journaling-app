@@ -5,20 +5,22 @@ import SearchBar from "../../components/Searchbar";
 import DecorativeLeaves from "../../components/DecorativeLeaves";
 import "./Sidebar.css";
 
-const Sidebar = () => {
-    const quote = "If you're going through hell, keep going - Winston Churchill"
-    
-    const createNew = (e) => {
-        console.log(e.target.innerText);
-    }
+const quote = "If you're going through hell, keep going - Winston Churchill";
 
+const createNew = (e) => {
+    console.log(e.target.innerText);
+};
+
+const Sidebar = () => {
     return (
         <>
         <div className="sidebar">
             <nav>
                 <ul>
                     <li>
-                        <Button onClick={createNew} text={"New"} className={"new-button font-face-sp"}/>
+                        <Link to="new">
+                            <Button onClick={createNew} text={"New"} className={"new-btn font-face-sp"}/>
+                        </Link>
                     </li>
                     <li>
                         <Quote text={quote}/>
@@ -34,7 +36,7 @@ const Sidebar = () => {
         </div>
         <Outlet />
         </>
-    )
-}
+    );
+};
 
 export default Sidebar;
