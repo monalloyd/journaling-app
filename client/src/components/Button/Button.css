@@ -17,6 +17,7 @@ button {
     height: 120px;
     border-radius: 50%;
     font-size: 200%;
+    opacity: 1;
 }
 
 .new-btn:focus,
@@ -66,4 +67,9 @@ button {
 .tag-btn {
     background-color: var(--accent-green-light);
     padding: 0.2rem 0.5rem;
+}
+
+#static-btn:hover {
+    opacity: 1;
+    cursor:default;
 }

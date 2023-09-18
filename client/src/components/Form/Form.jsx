@@ -1,12 +1,19 @@
-import { useState, useEffect } from "react";
-import "./Form.css";
+import { format } from "date-fns";
+import { useState } from "react";
 import Button from "../Button";
+import TextInput from "../Input/TextInput";
+import DateInput from "../Input/DateInput";
+import TextArea from "../Input/TextArea";
+import InputLabel from "../Input/InputLabel";
+import "./Form.css";
 
 const Form = ({entry, onSave, onCancel}) => {
     const [tags, setTags] = useState(entry?.tags ?? []);
     const [tagInput, setTagInput] = useState("");
     const [title, setTitle] = useState(entry?.title ?? "");
-    const [date, setDate] = useState(entry?.date ?? "");
+    const [date, setDate] = useState(
+        entry ? new Date(entry.date) : new Date()
+    );
     const [content, setContent] = useState(entry?.content ?? "");
 
     const handleTagInputKeyPress = (e) => {
@@ -21,6 +28,8 @@ const Form = ({entry, onSave, onCancel}) => {
         }
     };
 
+    const formattedDate = format(date, "yyyy-MM-dd");
+
     const deleteTag = (e) => {
         const updatedTags = tags.filter(t => t !== e.target.innerText);
         setTags(updatedTags);
@@ -29,34 +38,31 @@ const Form = ({entry, onSave, onCancel}) => {
     return(
         <form>
             <div className="space-after-field">
-                <label htmlFor="title">Title: </label>
-                <input 
-                    type="text" 
-                    id="title" 
-                    name="title" 
-                    className="form-input"
+                <InputLabel htmlFor={"title"} text={"Title:"}/>
+                <TextInput 
+                    id={"title"} 
+                    name={"title"} 
+                    className={"form-input"}
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                 />
             </div>
             <div className="space-after-field">
-                <label htmlFor="date">Date: </label>
-                <input 
-                    type="date" 
-                    id="date" 
-                    name="date" 
-                    className="form-input"
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
+            <InputLabel htmlFor={"date"} text={"Date:"}/>
+                <DateInput  
+                    id={"date"} 
+                    name={"date"} 
+                    className={"form-input"}
+                    value={formattedDate}
+                    onChange={(e) => setDate(new Date(e.target.value))}
                 />
             </div>
             <div>
-                <label htmlFor="tag">Add tags: </label>
-                <input 
-                    type="text" 
-                    id="tag" 
-                    name="tag" 
-                    className="form-input"
+            <InputLabel htmlFor={"tag"} text={"Add tags:"}/>
+                <TextInput 
+                    id={"tag"} 
+                    name={"tag"} 
+                    className={"form-input"}
                     value={tagInput}
                     onChange={e => setTagInput(e.target.value)}
                     onKeyDown={handleTagInputKeyPress}
@@ -75,13 +81,13 @@ const Form = ({entry, onSave, onCancel}) => {
                 }
             </div>
             <div>
-                <label htmlFor="entry">Entry: </label>
-                <textarea
-                    id="entry" 
-                    name="entry" 
-                    className="form-input" 
-                    rows="10" 
-                    cols="60"
+            <InputLabel htmlFor={"entry"} text={"Entry:"}/>
+                <TextArea
+                    id={"entry"} 
+                    name={"entry"} 
+                    className={"form-input"} 
+                    rows={"10"} 
+                    cols={"60"}
                     value={content}
                     onChange={e => setContent(e.target.value)}
                 />

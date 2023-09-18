@@ -17,12 +17,14 @@
   line-height: 1.5;
   font-weight: 400;
 
-  --primary-beige: #c8ab8b;
-  --primary-white:#dacdbf;
-  --secondary-rust: #925b45;
-  --accent-red-dark: #6f1c12;
-  --accent-green-dark:#404536;
-  --accent-green-light: #626456;
+  --primary-beige: #CEAA86;
+  --primary-white:#DDCDBF;
+  --secondary-rust: #9B5842;
+  --accent-red-dark: #791208;
+  --accent-green-dark:#404635;
+  --accent-green-light: #616456;
+
+  --text-indent: 20px;
 
   color: var(--accent-green-dark);
   background-color: var(--primary-beige);

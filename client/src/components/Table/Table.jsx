@@ -3,52 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "./../Button";
 import "./Table.css";
 
-const dummyEntries = [
-    {   
-        id: 1111,
-        title: "one",
-        date: "date1",
-        tags: ["tag"],
-        content: "blaaaaaaahhhhhhh1"
-    },
-    {
-        id: 2222,
-        title: "two",
-        date: "date2",
-        tags: ["tag2"],
-        content: "blaaaaaaahhhhhhh2"
-    },
-    {
-        id: 3333,
-        title: "three",
-        date: "date3",
-        tags: ["tag3"],
-        content: "blaaaaaaahhhhhhh3"
-    },
-    {
-        id: 4444,
-        title: "four",
-        date: "date4",
-        tags: ["tag", "tag2"],
-        content: "blaaaaaaahhhhhhh4"
-    },
-    {
-        id: 5555,
-        title: "five",
-        date: "date5",
-        tags: ["tag", "tag3"],
-        content: "blaaaaaaahhhhhhh5"
-    },
-    {
-        id: 6666,
-        title: "six",
-        date: "date6",
-        tags: ["tag2", "tag3"],
-        content: "blaaaaaaahhhhhhh6"
-    }
-]
-
-const Table = () => {
+const Table = ({dummyEntries}) => {
     const location = useLocation();
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);

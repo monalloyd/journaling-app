@@ -6,14 +6,6 @@ form {
     border-radius: 8px;
 }
 
-label {
-    display: block;
-}
-
-input[type="date"] {
-    resize: none;
-}
-
 .form-input {
     margin-top: 5px;
     margin-bottom: 5px;

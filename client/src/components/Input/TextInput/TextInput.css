@@ -1,0 +1,19 @@
+input {
+    border-radius: 8px;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    border: none;
+    box-sizing: border-box;
+    resize: horizontal;
+    padding: 0.7rem 1.7rem;
+    min-width: 10rem;
+    font-family: inherit;
+    font-weight: 400;
+    background-color: var(--primary-beige);
+    color: var(--accent-green-dark);
+}
+  
+input:focus {
+    outline: 2px double;
+    border-color: var(--accent-green-light);
+}

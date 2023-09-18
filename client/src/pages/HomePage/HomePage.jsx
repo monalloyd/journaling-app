@@ -1,9 +1,10 @@
 import Table from "../../components/Table";
+import { dummyEntries } from "../../constants/DummyData";
 
 const HomePage = () => {
     return (
         <div className="content">
-          <Table />
+          <Table dummyEntries={dummyEntries}/>
         </div>
       );
 }

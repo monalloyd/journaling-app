@@ -1,13 +1,13 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from "react";
-import "./SearchBar.css";
+import "./SelectMenu.css";
 
-const SearchBar = () => {
+const SelectMenu = ({tags}) => {
     const [selectedOption, setSelectedOption] = useState("");
-    const [tags, setTags] = useState(["tag", "tag2", "tag3"]);
     const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
+    
     const [selectedTags, setSelectedTags] = useState(
         queryParams.getAll("tag") || []
     );
@@ -24,10 +24,12 @@ const SearchBar = () => {
         if (!selectedTags.includes(newTag)) {
             setSelectedTags((prevTags) => [...prevTags, newTag]);
             queryParams.append("tag", newTag);
+            navigate("/", { replace: true });
             navigate(`?${queryParams.toString()}`);
         }
 
         changeSelectedOption();
+        event.target.blur();
     };
 
     const changeSelectedOption = () => {
@@ -52,4 +54,4 @@ const SearchBar = () => {
     );
 }
 
-export default SearchBar;
+export default SelectMenu;

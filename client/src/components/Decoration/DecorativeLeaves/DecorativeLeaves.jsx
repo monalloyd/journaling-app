@@ -1,5 +1,5 @@
 import { ReactSVG } from "react-svg";
-import LeavesSVG from "../../assets/images/leaves.svg";
+import LeavesSVG from "../../../assets/images/leaves.svg";
 
 import "./DecorativeLeaves.css";
 

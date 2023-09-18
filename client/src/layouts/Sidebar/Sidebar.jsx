@@ -1,15 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
 import Button from "../../components/Button";
-import Quote from "../../components/Quote";
-import SearchBar from "../../components/Searchbar";
-import DecorativeLeaves from "../../components/DecorativeLeaves";
+import SelectMenu from "../../components/SelectMenu";
+import Quote from "../../components/Decoration/Quote";
+import DecorativeLeaves from "../../components/Decoration/DecorativeLeaves";
+import { quote, dummyTags } from "../../constants/DummyData";
 import "./Sidebar.css";
-
-const quote = "If you're going through hell, keep going - Winston Churchill";
-
-const createNew = (e) => {
-    console.log(e.target.innerText);
-};
 
 const Sidebar = () => {
     return (
@@ -19,14 +14,14 @@ const Sidebar = () => {
                 <ul>
                     <li>
                         <Link to="new">
-                            <Button onClick={createNew} text={"New"} className={"new-btn font-face-sp"}/>
+                            <Button text={"New"} className={"new-btn font-face-sp"}/>
                         </Link>
                     </li>
                     <li>
                         <Quote text={quote}/>
                     </li>
                     <li>
-                        <SearchBar />
+                        <SelectMenu tags={dummyTags}/>
                     </li>
                     <li>
                         <DecorativeLeaves />

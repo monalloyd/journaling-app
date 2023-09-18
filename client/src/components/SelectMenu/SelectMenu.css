@@ -1,4 +1,4 @@
-input, select, textarea {
+select {
   border-radius: 8px;
   margin-bottom: 10%;
   margin-top: 10%;
@@ -13,7 +13,7 @@ input, select, textarea {
   color: var(--accent-green-dark);
 }
 
-input:focus, select:focus, textarea:focus {
+select:focus {
   outline: 2px double;
   border-color: var(--accent-green-light);
 }
@@ -21,4 +21,15 @@ input:focus, select:focus, textarea:focus {
 select {
   -webkit-appearance: none;
   appearance: none;
+}
+
+select option {
+  background: var(--primary-beige); 
+  color: var(--accent-green-dark); 
+  box-shadow: inset 20px 20px var(--primary-beige);
+} 
+
+select option:hover {
+  color: var(--primary-beige);; 
+  box-shadow: inset 20px 20px var(--accent-green-light);;
 }
