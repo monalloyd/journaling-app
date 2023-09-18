@@ -3,6 +3,7 @@ import Button from "../Button";
 import "./Entry.css";
 
 const Entry = ({entry, onEdit, onCancel}) => {
+    const lines = entry.content.split("\n");
     return (
         <div className="entry-container">
             <div className="entry-body">
@@ -12,7 +13,11 @@ const Entry = ({entry, onEdit, onCancel}) => {
                     {entry.date}
                     <span className="after"></span>
                 </div>
-                <div className="entry-content">{entry.content}</div>
+                <div className="entry-content">
+                    {lines && lines.map((line, i) => (
+                        <p className="entry-p" key={i}>{line}</p>
+                    ))}
+                </div>
                 <div className="button-container">
                     <Button 
                         className={"nav-btn-square edit-btn robo"} 

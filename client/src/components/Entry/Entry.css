@@ -48,6 +48,10 @@
     margin-bottom: 40px;
 }
 
+.entry-p {
+    margin: 5px 0;
+}
+
 .heading-ie {
     display: flex;
     flex: 1;
