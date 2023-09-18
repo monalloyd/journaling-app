@@ -8,10 +8,8 @@ const Entry = ({entry, onEdit, onCancel}) => {
         <div className="entry-container">
             <div className="entry-body">
                 <div className="decorative-title font-face-sp">{entry.title}</div>
-                <div className="heading-ie">
-                    <span className="before"></span>
+                <div className="line-deco">
                     {entry.date}
-                    <span className="after"></span>
                 </div>
                 <div className="entry-content">
                     {lines && lines.map((line, i) => (
@@ -34,12 +32,11 @@ const Entry = ({entry, onEdit, onCancel}) => {
             <div className="entry-tag-container">
                 {
                     entry.tags && entry.tags.map((tag, i) => (
-                        <div className="entry-tag">
+                        <div className="entry-tag" key={i}>
                             <Button 
                                 className={"nav-btn-square tag-btn robo"}
                                 id={"static-btn"} 
-                                text={tag} 
-                                key={i}
+                                text={tag}
                             />
                         </div>
                     ))

@@ -42,7 +42,7 @@ const dummyEntries = [
         id: 6666,
         title: "six",
         date: "14.09.2023",
-        tags: ["tag2", "tag3"],
+        tags: ["tag", "tag2", "tag3"],
         content: "blaaaaaaahhhhhhh6"
     }
 ]

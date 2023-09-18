@@ -6,11 +6,13 @@ textarea {
     box-sizing: border-box;
     resize: horizontal;
     padding: 0.7rem 1.7rem;
-    min-width: 10rem;
+    /* min-width: 10rem; */
     font-family: inherit;
     font-weight: 400;
     background-color: var(--primary-beige);
     color: var(--accent-green-dark);
+    /* max-width: 35rem; */
+    width: 100%;
 }
   
 textarea:focus {

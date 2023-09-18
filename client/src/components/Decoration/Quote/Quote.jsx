@@ -1,7 +1,7 @@
 import "./Quote.css";
 
-const Quote = ({text}) => {
-    return <p className="quote">{text}</p>
+const Quote = ({text, className}) => {
+    return <p className={className}>{text}</p>
 }
 
 export default Quote;

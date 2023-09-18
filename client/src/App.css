@@ -24,8 +24,6 @@
   --accent-green-dark:#404635;
   --accent-green-light: #616456;
 
-  --text-indent: 20px;
-
   color: var(--accent-green-dark);
   background-color: var(--primary-beige);
 
@@ -59,6 +57,8 @@ a:hover, a:focus {
 }
 
 #root {
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }
 
@@ -68,7 +68,12 @@ a:hover, a:focus {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 30%;
-  width: 70%;
-  height: 100vh;
+  flex-grow: 1;
+  padding: 0 7px;
+}
+
+@media only screen and (max-width: 1070px) {
+  #root {
+      flex-direction: column;
+  }
 }

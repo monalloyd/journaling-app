@@ -1,9 +1,11 @@
 form {
     padding: 20px;
     box-sizing: border-box;
-    position: absolute;
+    /* position: absolute; */
     background-color: var(--primary-white);
     border-radius: 8px;
+    max-width: 600px;
+    min-width: 10rem;
 }
 
 .form-input {
@@ -20,8 +22,4 @@ form {
 
 .space-after-field {
     margin-bottom: 10px;
-}
-
-.tag-wrapper {
-    /* make tags drop on new line without stretching parent container */
 }

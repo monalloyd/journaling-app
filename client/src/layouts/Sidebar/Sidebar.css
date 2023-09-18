@@ -1,7 +1,7 @@
 .sidebar {
     width: 30%;
     height: 100vh;
-    position: absolute;
+    position: relative;
     top: 0;
     bottom: 0;
     background-color: var(--secondary-rust);
@@ -36,4 +36,37 @@
 .sidebar nav ul p {
     padding-left: 100px;
     padding-right: 100px;
+}
+
+@media only screen and (max-width: 1070px) {
+    .sidebar {
+        width: 100vw;
+        height: 100px;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 3rem;
+        align-items: center;
+    }
+    .sidebar nav ul {
+        flex-direction: row;
+    }
+
+    .li-one {
+        flex-basis: 20%;
+        margin-right: 20px;
+        padding: 0;
+    }
+
+    .li-two {
+        display: none;
+    }
+
+    .li-three {
+        flex-basis: 80%;
+        margin-left: 20px;
+    }
+
+    .li-four {
+        display: none;
+    }
 }

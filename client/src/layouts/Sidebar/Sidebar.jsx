@@ -12,18 +12,18 @@ const Sidebar = () => {
         <div className="sidebar">
             <nav>
                 <ul>
-                    <li>
+                    <li className="li-one">
                         <Link to="new">
                             <Button text={"New"} className={"new-btn font-face-sp"}/>
                         </Link>
                     </li>
-                    <li>
-                        <Quote text={quote}/>
+                    <li className="li-two">
+                        <Quote className={"quote"} text={quote}/>
                     </li>
-                    <li>
+                    <li className="li-three">
                         <SelectMenu tags={dummyTags}/>
                     </li>
-                    <li>
+                    <li className="li-four">
                         <DecorativeLeaves />
                     </li>
                 </ul>
