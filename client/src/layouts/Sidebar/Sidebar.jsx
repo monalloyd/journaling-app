@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
 import SelectMenu from "../../components/SelectMenu";
 import Quote from "../../components/Decoration/Quote";
@@ -7,15 +7,19 @@ import { quote, dummyTags } from "../../constants/DummyData";
 import "./Sidebar.css";
 
 const Sidebar = () => {
+    const navigate = useNavigate();
+
     return (
         <>
         <div className="sidebar">
             <nav>
                 <ul>
                     <li className="li-one">
-                        <Link to="new">
-                            <Button text={"New"} className={"new-btn font-face-sp"}/>
-                        </Link>
+                        <Button 
+                            text={"New"} 
+                            className={"new-btn font-face-sp"}
+                            onClick={() => navigate("new")}
+                        />
                     </li>
                     <li className="li-two">
                         <Quote className={"quote"} text={quote}/>
