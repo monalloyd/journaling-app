@@ -3,12 +3,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "./../Button";
 import "./Table.css";
 
-const Table = ({dummyEntries}) => {
+const Table = ({ dummyEntries }) => {
     const location = useLocation();
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
     const tagsFromUrl = queryParams.getAll("tag");
-    const [entries, setEntries] = useState([]);
+    const [ entries, setEntries ] = useState([]);
 
     useEffect(() => {
         const filteredEntries = dummyEntries.filter((entry) => {
@@ -19,6 +19,11 @@ const Table = ({dummyEntries}) => {
         });
         setEntries(filteredEntries);
     }, [location.search]);
+
+    const formatDateDisplay = (date) => {
+        const storedDate = new Date(date);
+        return storedDate.toISOString().split('T')[0];
+    }
 
     const deleteTag = (tagToDelete) => {
         const updatedTags = [...tagsFromUrl];
@@ -35,6 +40,11 @@ const Table = ({dummyEntries}) => {
 
             navigate(`?${queryParams.toString()}`);
         }
+    }
+
+    const goToEditPage = (id) => {
+        navigate("/", { replace: true });
+        navigate(`/update/${id}`);
     }
 
     return (
@@ -55,36 +65,37 @@ const Table = ({dummyEntries}) => {
                     }
                     </td>
                 </tr>
-                {entries.map((entry) => (
-                    <tr key={entry.id}>
-                    <td className="col-1">
-                        <Link to={`/entry/${entry.id}`}>
-                            {entry.title}
-                        </Link>
-                    </td>
-                    <td className="col-2">{entry.date}</td>
-                    <td className="col-3">
-                        {
-                            entry.tags && entry.tags.map((tag, i) => (
-                                <span key={i}>{tag}</span>
-                            ))
-                        }
-                    </td>
-                    <td className="col-4">
-                        <Link to={`/update/${entry.id}`}>
+                {
+                    entries.map((entry) => (
+                        <tr key={entry.id}>
+                        <td className="col-1">
+                            <Link to={`/entry/${entry.id}`}>
+                                {entry.title}
+                            </Link>
+                        </td>
+                        <td className="col-2">{formatDateDisplay(entry.date)}</td>
+                        <td className="col-3">
+                            {
+                                entry.tags && entry.tags.map((tag, i) => (
+                                    <span key={i}>{tag}</span>
+                                ))
+                            }
+                        </td>
+                        <td className="col-4">
                             <Button 
-                                className={"nav-btn-square update-btn robo"} 
-                                text={"Update"}
+                                className={"nav-btn-square edit-btn robo"} 
+                                text={"Edit"}
+                                onClick={() => goToEditPage(entry.id)}
                             />
-                        </Link>
-                        <Button 
-                            className={"nav-btn-square delete-btn robo"} 
-                            text={"Delete"} 
-                            onClick={(e) => console.log(e.target)}
-                        />
-                    </td>
-                </tr>
-                ))}
+                            <Button 
+                                className={"nav-btn-square delete-btn robo"} 
+                                text={"Delete"} 
+                                onClick={(e) => console.log(e.target)}
+                            />
+                        </td>
+                    </tr>
+                    ))
+                }
             </tbody>
         </table>
         </>
