@@ -1,5 +1,4 @@
-import { format } from "date-fns";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../Button";
 import TextInput from "../Input/TextInput";
 import DateInput from "../Input/DateInput";
@@ -7,18 +6,23 @@ import TextArea from "../Input/TextArea";
 import InputLabel from "../Input/InputLabel";
 import "./Form.css";
 
-const Form = ({entry, onSave, onCancel}) => {
-    const [tags, setTags] = useState(entry?.tags ?? []);
-    const [tagInput, setTagInput] = useState("");
-    const [title, setTitle] = useState(entry?.title ?? "");
-    const [date, setDate] = useState(
-        entry ? new Date(entry.date) : new Date()
-    );
-    const [content, setContent] = useState(entry?.content ?? "");
+const Form = ({ entry, onSave, onCancel }) => {
+    const [ tags, setTags ] = useState(entry?.tags ?? []);
+    const [ tagInput, setTagInput ] = useState("");
+    const [ title, setTitle ] = useState(entry?.title ?? "");
+    const [ content, setContent ] = useState(entry?.content ?? "");
+    const [ date, setDate ] = useState(entry?.date ?? "");
 
+    useEffect(() => {
+        if (entry?.date) {
+          const storedDate = new Date(entry.date);
+          setDate(storedDate.toISOString().split('T')[0]);
+        }
+      }, [entry]);
+    
     const handleTagInputKeyPress = (e) => {
         if (e.key === "Enter" && tagInput.trim() !== "") {
-            const trimmedTag = tagInput.trim().toLocaleLowerCase();
+            const trimmedTag = tagInput.trim().toLowerCase();
             if (!tags.includes(trimmedTag)) {
                 setTags([...tags, trimmedTag]);
                 setTagInput("");
@@ -28,7 +32,10 @@ const Form = ({entry, onSave, onCancel}) => {
         }
     };
 
-    const formattedDate = format(date, "yyyy-MM-dd");
+    const handleDateInput = (e) => {
+        setDate(e.target.value);
+        e.target.blur();
+    }
 
     const deleteTag = (e) => {
         const updatedTags = tags.filter(t => t !== e.target.innerText);
@@ -53,8 +60,8 @@ const Form = ({entry, onSave, onCancel}) => {
                     id={"date"} 
                     name={"date"} 
                     className={"form-input"}
-                    value={formattedDate}
-                    onChange={(e) => setDate(new Date(e.target.value))}
+                    value={date}
+                    onChange={(e) => handleDateInput(e)}
                 />
             </div>
             <div>
