@@ -23,6 +23,7 @@
   --accent-red-dark: #791208;
   --accent-green-dark:#404635;
   --accent-green-light: #616456;
+  --accent-green-lightest: #b8bab1;
 
   color: var(--accent-green-dark);
   background-color: var(--primary-beige);

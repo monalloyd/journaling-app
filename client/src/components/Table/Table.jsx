@@ -77,7 +77,7 @@ const Table = ({ dummyEntries }) => {
                         <td className="col-3">
                             {
                                 entry.tags && entry.tags.map((tag, i) => (
-                                    <span key={i}>{tag}</span>
+                                    <span key={i} className="thin-tag">{tag}</span>
                                 ))
                             }
                         </td>

@@ -49,6 +49,12 @@ span {
     padding:0;
 }
 
+.thin-tag {
+    border-radius: 8px;
+    border: 1px solid var(--accent-green-lightest);
+    padding: 3px;
+}
+
 #tag-container {
     background-color: transparent;
     display: flex;
