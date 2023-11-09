@@ -1,0 +1,38 @@
+[
+    {
+        "title": "My First Journal Entry",
+        "date": "2023-09-12T12:34:56.789Z",
+        "tags": ["welcome"],
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+        "title": "Second Entry",
+        "date": "2023-09-13T12:34:56.789Z",
+        "tags": ["cooking"],
+        "content": "this is a text"
+    },
+    {
+        "title": "Third Entry",
+        "date": "2023-09-14T12:34:56.789Z",
+        "tags": ["work"],
+        "content": "this is also a text"
+    },
+    {   
+        "title": "Fourth Entry",
+        "date": "2023-09-09T12:34:56.789Z",
+        "tags": ["work"],
+        "content": "even more text"
+    },
+    {
+        "title": "Fifth Entry",
+        "date": "2023-09-10T12:34:56.789Z",
+        "tags": ["holiday"],
+        "content": "we sure are reading a lot of text"
+    },
+    {
+        "title": "Sixth Entry",
+        "date": "2023-10-10T12:34:56.789Z",
+        "tags": ["holiday"],
+        "content": "i love this text"
+    }
+]
