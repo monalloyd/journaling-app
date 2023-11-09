@@ -4,12 +4,13 @@ import "./Entry.css";
 
 const Entry = ({entry, onEdit, onCancel}) => {
     const lines = entry.content.split("\n");
+    const formattedEntryDate = entry.date.split('T')[0];
     return (
         <div className="entry-container">
             <div className="entry-body">
                 <div className="decorative-title font-face-sp">{entry.title}</div>
                 <div className="line-deco">
-                    {entry.date}
+                    {formattedEntryDate}
                 </div>
                 <div className="entry-content">
                     {lines && lines.map((line, i) => (
