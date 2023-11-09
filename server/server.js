@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const entriesRouter = require("./routes/entries.router");
+const tagsRouter = require("./routes/tags.router");
 
 const { MONGO_URL, PORT } = process.env;
 
@@ -11,6 +13,9 @@ if (!MONGO_URL) {
 
 const app = express();
 app.use(express.json());
+
+app.use("/api/entries", entriesRouter);
+app.use("/api/tags", tagsRouter);
 
 const main = async () => {
     await mongoose.connect(MONGO_URL);
