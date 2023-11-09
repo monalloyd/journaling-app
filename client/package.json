@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --config config/vite.config.js",
-    "build": "vite build --config config/vite.config.js",
-    "lint": "eslint src/ --ext js,jsx --report-unused-disable-directives --max-warnings 0 --config config/.eslintrc.cjs",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src/ --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
