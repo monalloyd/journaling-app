@@ -22,6 +22,9 @@ const Form = ({ entry, onSave, onCancel }) => {
             setTitle(entry[0].title);
             setDate(entry[0].date);
             setContent(entry[0].content);
+        } else {
+            const today = new Date().toISOString().split("T")[0];
+            setDate(today);
         }
       }, [entry]);
 
