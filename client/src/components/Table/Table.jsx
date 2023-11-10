@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "./../Button";
 import "./Table.css";
 
-const Table = ({ dummyEntries }) => {
+const Table = ({ fetchedEntries, onDelete }) => {
     const location = useLocation();
     const navigate = useNavigate();
     const queryParams = new URLSearchParams(location.search);
@@ -11,19 +11,16 @@ const Table = ({ dummyEntries }) => {
     const [ entries, setEntries ] = useState([]);
 
     useEffect(() => {
-        const filteredEntries = dummyEntries.filter((entry) => {
+        const filteredEntries = fetchedEntries.filter((entry) => {
             if (tagsFromUrl.length === 0) {
                 return true;
             }
-            return tagsFromUrl.every((tag) => entry.tags.includes(tag));
+            return tagsFromUrl.every((tag) => {
+                return entry.tags.some((entryTag) => entryTag.name === tag);
+            });
         });
         setEntries(filteredEntries);
     }, [location.search]);
-
-    const formatDateDisplay = (date) => {
-        const storedDate = new Date(date);
-        return storedDate.toISOString().split('T')[0];
-    }
 
     const deleteTag = (tagToDelete) => {
         const updatedTags = [...tagsFromUrl];
@@ -67,17 +64,17 @@ const Table = ({ dummyEntries }) => {
                 </tr>
                 {
                     entries.map((entry) => (
-                        <tr key={entry.id}>
+                        <tr key={entry._id}>
                         <td className="col-1">
-                            <Link to={`/entry/${entry.id}`}>
+                            <Link to={`/entry/${entry._id}`}>
                                 {entry.title}
                             </Link>
                         </td>
-                        <td className="col-2">{formatDateDisplay(entry.date)}</td>
+                        <td className="col-2">{entry.date}</td>
                         <td className="col-3">
                             {
-                                entry.tags && entry.tags.map((tag, i) => (
-                                    <span key={i} className="thin-tag">{tag}</span>
+                                entry.tags && entry.tags.map((tag) => (
+                                    <span key={tag._id} className="thin-tag">{tag.name}</span>
                                 ))
                             }
                         </td>
@@ -85,12 +82,12 @@ const Table = ({ dummyEntries }) => {
                             <Button 
                                 className={"nav-btn-square edit-btn robo"} 
                                 text={"Edit"}
-                                onClick={() => goToEditPage(entry.id)}
+                                onClick={() => goToEditPage(entry._id)}
                             />
                             <Button 
                                 className={"nav-btn-square delete-btn robo"} 
                                 text={"Delete"} 
-                                onClick={(e) => console.log(e.target)}
+                                onClick={() => onDelete(entry._id)}
                             />
                         </td>
                     </tr>

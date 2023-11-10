@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
+import { createEntry } from "../../api/api";
 import Form from "../../components/Form";
 
 const NewEntryPage = () => {
     const navigate = useNavigate();
 
-    const saveUpdatedEntry = () => {
-        console.log("saved");
+    const saveUpdatedEntry = (entry) => {
+        createEntry(entry)
+        .then(() => {
+            navigate("/");
+        })
     };
 
     return (

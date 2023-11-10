@@ -1,16 +1,14 @@
 import Button from "../Button";
-
 import "./Entry.css";
 
 const Entry = ({entry, onEdit, onCancel}) => {
     const lines = entry.content.split("\n");
-    const formattedEntryDate = entry.date.split('T')[0];
     return (
         <div className="entry-container">
             <div className="entry-body">
                 <div className="decorative-title font-face-sp">{entry.title}</div>
                 <div className="line-deco">
-                    {formattedEntryDate}
+                    {entry.date}
                 </div>
                 <div className="entry-content">
                     {lines && lines.map((line, i) => (
@@ -32,12 +30,12 @@ const Entry = ({entry, onEdit, onCancel}) => {
             </div>
             <div className="entry-tag-container">
                 {
-                    entry.tags && entry.tags.map((tag, i) => (
-                        <div className="entry-tag" key={i}>
+                    entry.tags && entry.tags.map((tag) => (
+                        <div className="entry-tag" key={tag._id}>
                             <Button 
                                 className={"nav-btn-square tag-btn robo"}
                                 id={"static-btn"} 
-                                text={tag}
+                                text={tag.name}
                             />
                         </div>
                     ))

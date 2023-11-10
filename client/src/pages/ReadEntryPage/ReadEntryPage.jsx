@@ -1,29 +1,22 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { fetchJson } from "../../api/api";
 import Entry from "../../components/Entry";
-import LoadingSpinner from "../../components/LoadingSpinner";
-import { dummyEntries } from "../../constants/DummyData";
-
-const fetchEntry = (param) => {
-    return dummyEntries.find((entry) => entry.id === parseInt(param));
-}
 
 const ReadEntryPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-
     const [entry, setEntry] = useState(null);
-    const [entryLoading, setEntryLoading] = useState(true);
-
+    const [ fetched, setFetched ] = useState(false);
+    
     useEffect(() => {
-        setEntryLoading(true);
-        setEntry(fetchEntry(id));
-        setEntryLoading(false);
+        const fetchPromise = fetchJson(`api/entries/${id}`)
+            .then((data) => {
+                const entry = data[0];
+                setEntry(entry);
+            });
+        Promise.all([fetchPromise]).then(() => !fetched ? setFetched(true) : setFetched(false))
     }, [id]);
-
-    if (entryLoading) {
-        return <LoadingSpinner />;
-    }
 
     const loadUpdatePage = (id) => {
         navigate("/", { replace: true });
@@ -32,11 +25,13 @@ const ReadEntryPage = () => {
 
     return (
         <div className="content">
-            <Entry 
-                entry={entry}
-                onEdit={() => loadUpdatePage(entry.id)}
-                onCancel={() => navigate("/")}
-            />
+            {
+                fetched && <Entry 
+                    entry={entry}
+                    onEdit={() => loadUpdatePage(entry._id)}
+                    onCancel={() => navigate("/")}
+                />
+            }
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { fetchJson, createTag } from "../../api/api";
 import Button from "../Button";
 import TextInput from "../Input/TextInput";
 import DateInput from "../Input/DateInput";
@@ -7,28 +8,75 @@ import InputLabel from "../Input/InputLabel";
 import "./Form.css";
 
 const Form = ({ entry, onSave, onCancel }) => {
-    const [ tags, setTags ] = useState(entry?.tags ?? []);
+    const [ tags, setTags ] = useState([]);
     const [ tagInput, setTagInput ] = useState("");
-    const [ title, setTitle ] = useState(entry?.title ?? "");
-    const [ content, setContent ] = useState(entry?.content ?? "");
-    const [ date, setDate ] = useState(entry?.date ?? "");
+    const [ title, setTitle ] = useState("");
+    const [ content, setContent ] = useState("");
+    const [ date, setDate ] = useState("");
 
     useEffect(() => {
-        if (entry?.date) {
-          const storedDate = new Date(entry.date);
-          setDate(storedDate.toISOString().split('T')[0]);
+        if(entry){
+            let tagArray = [];
+            entry[0].tags.forEach((tag) => tagArray.push(tag));
+            setTags(tagArray);
+            setTitle(entry[0].title);
+            setDate(entry[0].date);
+            setContent(entry[0].content);
         }
       }, [entry]);
+
+      const onSubmit = async (e) => {
+        e.preventDefault();
+
+        if (entry) {
+            return onSave({
+                _id: entry[0]._id,
+                title,
+                date,
+                tags,
+                content
+            });
+        }
+    
+        return onSave({
+            title,
+            date,
+            tags,
+            content
+        });
+    };
+
     
     const handleTagInputKeyPress = (e) => {
         if (e.key === "Enter" && tagInput.trim() !== "") {
             const trimmedTag = tagInput.trim().toLowerCase();
-            if (!tags.includes(trimmedTag)) {
-                setTags([...tags, trimmedTag]);
-                setTagInput("");
-            } else {
-                setTagInput("");
+            let postAlreadyHasTag = false;
+
+            for(let tag of tags) {
+                if(tag.name === trimmedTag){
+                    postAlreadyHasTag = true;
+                }
             }
+
+            if(postAlreadyHasTag) {
+                setTagInput("");
+                return;
+            }
+
+            fetchJson(`api/tags/${trimmedTag}`)
+                .then((data) => {
+                    if(data.length === 0){
+                       createTag({name: trimmedTag})
+                        .then((data) => {
+                            setTags([...tags, data]);
+                        })
+                    } else {
+                        setTags([...tags, data[0]]);
+                    }
+                }
+            );
+
+            setTagInput("");
         }
     };
 
@@ -38,7 +86,7 @@ const Form = ({ entry, onSave, onCancel }) => {
     }
 
     const deleteTag = (e) => {
-        const updatedTags = tags.filter(t => t !== e.target.innerText);
+        const updatedTags = tags.filter(t => t.name !== e.target.innerText);
         setTags(updatedTags);
     }
 
@@ -77,12 +125,12 @@ const Form = ({ entry, onSave, onCancel }) => {
             </div>
             <div className="space-after-field tag-wrapper">
                 {
-                    tags && tags.map((tag, i) => (
+                    tags && tags.map((tag) => (
                         <Button 
                             onClick={deleteTag} 
-                            text={tag}
+                            text={tag.name}
                             className={"nav-btn-square tag-btn robo"} 
-                            key={i} 
+                            key={tag._id}
                         />
                     ))
                 }
@@ -103,7 +151,7 @@ const Form = ({ entry, onSave, onCancel }) => {
             <div className="form-btns">
                 <Button 
                     className={"nav-btn-square save-btn robo"} 
-                    onClick={onSave} 
+                    onClick={onSubmit} 
                     text={"Save"}
                 />
                 <Button 

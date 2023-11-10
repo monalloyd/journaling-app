@@ -41,12 +41,11 @@ const SelectMenu = ({tags}) => {
         <select 
             className="tag-filter" 
             onChange={handleTagChange}
-            value={selectedOption}
-        >
+            value={selectedOption}>
             <option value="">Filter tags...</option>
             {
-                tags && tags.map((tag, i) => (
-                    <option key={i} value={tag}>{tag}</option>
+                tags && tags.map((tag) => (
+                    <option key={tag._id} value={tag.name}>{tag.name}</option>
                 ))
             }
         </select>
