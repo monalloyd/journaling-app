@@ -1,38 +1,6 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
-
-//import { defineConfig, loadEnv } from 'vite'
-
-// export default defineConfig(
-//   {plugins: [react()]},
-//   ({ command, mode }) => {
-//   // Load env file based on `mode` in the current working directory.
-//   // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
-//   const env = loadEnv(mode, process.cwd(), '')
-//   return {
-//     // vite config
-//     define: {
-//       __APP_ENV__: JSON.stringify(env.APP_ENV),
-//     },
-//   }
-// })
-
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default ({ mode }) => {
-    process.env = {...process.env, ...loadEnv(mode, process.cwd())};
-
-    return defineConfig({
-        plugins: [react()],
-
-        server: {
-            port: process.env.VITE_SERVER_PORT,
-        },
-    });
-}
+export default defineConfig({
+  plugins: [react()],
+})
