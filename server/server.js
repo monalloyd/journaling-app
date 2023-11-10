@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const entriesRouter = require("./routes/entries.router");
 const tagsRouter = require("./routes/tags.router");
 
-const { MONGO_URL, PORT } = process.env;
+const { MONGO_URL, PORT, CLIENT } = process.env;
 
 if (!MONGO_URL) {
     console.error("Missing MONGO_URL environment variable");
@@ -13,6 +13,13 @@ if (!MONGO_URL) {
 
 const app = express();
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", CLIENT);
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    res.setHeader("Access-Control-Allow-Methods", "*");
+    next();
+});
 
 app.use("/api/entries", entriesRouter);
 app.use("/api/tags", tagsRouter);
