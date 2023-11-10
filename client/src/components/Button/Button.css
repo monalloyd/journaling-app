@@ -40,13 +40,13 @@ button {
     border-radius: 50%;
 }
 
-.nav-btn-square {
+.nav-btn-square, .popup-btn {
     border-radius: 8px;
     margin: 2px;
     font-weight: 600;
 }
 
-.nav-btn-round:hover, .nav-btn-square:hover {
+.nav-btn-round:hover, .nav-btn-square:hover, .popup-btn:hover {
     opacity: 0.8;
     -webkit-transition: .5s;
     -moz-transition: .5s;

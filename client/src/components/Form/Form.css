@@ -1,7 +1,6 @@
 form {
     padding: 20px;
     box-sizing: border-box;
-    /* position: absolute; */
     background-color: var(--primary-white);
     border-radius: 8px;
     max-width: 600px;
